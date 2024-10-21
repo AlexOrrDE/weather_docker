@@ -1,0 +1,8 @@
+services:
+  weather_ingestor:
+    build: .
+    container_name: weather_ingestor
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
