@@ -1,6 +1,6 @@
 from psycopg2 import sql
-from processing.connection import db_connection
-from error_handling.error_connection import handle_errors
+from src.processing.connection import db_connection
+from src.error_handling.error_connection import handle_errors
 
 
 @handle_errors
