@@ -18,10 +18,11 @@ def handler():
         logging.info(f"API Key: {api_key}")
 
         weather_data = fetch_weather_data(city, api_key)
-        if weather_data:
-            save_to_json(weather_data, city)
-        else:
+        if not weather_data:
             logging.error(f"Failed to fetch weather data for {city}.")
+            return
+
+        save_to_json(weather_data, city)
 
         data_dir = "/app/data/json"
 
