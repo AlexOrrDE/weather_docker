@@ -78,20 +78,24 @@ unit-test-ingestion:
 	$(call execute_in_env, PYTHONPATH=${PYTHONPATH}/ingestion python -m pytest -vrP test/test_ingestion)
 unit-test-processing:
 	$(call execute_in_env, PYTHONPATH=${PYTHONPATH}/processing python -m pytest -vrP test/test_processing)
+unit-test-error-handling:
+	$(call execute_in_env, PYTHONPATH=${PYTHONPATH}/error_handling python -m pytest -vrP test/test_error_handling)
 unit-test-handler:
 	$(call execute_in_env, PYTHONPATH=${PYTHONPATH} python -m pytest -vrP test/test_handler.py)
 
-run-unit-tests: unit-test-ingestion unit-test-processing unit-test-handler
+run-unit-tests: unit-test-ingestion unit-test-processing unit-test-error-handling unit-test-handler
 
 ## Run the coverage check
 check-coverage-ingestion:
 	$(call execute_in_env, PYTHONPATH=${PYTHONPATH}/ingestion coverage run -m --omit 'venv/*' -m pytest test/test_ingestion --ignore=layer && coverage report -m)
 check-coverage-processing:
 	$(call execute_in_env, PYTHONPATH=${PYTHONPATH}/processing coverage run -m --omit 'venv/*' -m pytest test/test_processing --ignore=layer && coverage report -m)
+check-coverage-error-handling:
+	$(call execute_in_env, PYTHONPATH=${PYTHONPATH}/error_handling coverage run -m --omit 'venv/*' -m pytest test/test_error_handling --ignore=layer && coverage report -m)
 check-coverage-handler:
 	$(call execute_in_env, PYTHONPATH=${PYTHONPATH} coverage run -m --omit 'venv/*' -m pytest test/test_handler.py --ignore=layer && coverage report -m)
 
-run-coverage-checks: check-coverage-ingestion check-coverage-processing check-coverage-handler
+run-coverage-checks: check-coverage-ingestion check-coverage-processing check-coverage-error-handling check-coverage-handler
 ## Run all checks
 run-checks: security-test run-flake run-unit-tests run-coverage-checks
 
