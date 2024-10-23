@@ -13,18 +13,20 @@ def save_to_db(processed_data):
                 ON CONFLICT (city_name, datetime)
                 DO NOTHING"""
 
-    for entry in processed_data:
-        cursor.execute(
-            sql.SQL(insert_query),
-            (
-                entry["city_name"],
-                entry["temperature_celsius"],
-                entry["humidity"],
-                entry["weather_description"],
-                entry["datetime"],
-            ),
-        )
+    try:
+        for entry in processed_data:
+            cursor.execute(
+                sql.SQL(insert_query),
+                (
+                    entry["city_name"],
+                    entry["temperature_celsius"],
+                    entry["humidity"],
+                    entry["weather_description"],
+                    entry["datetime"],
+                ),
+            )
+        conn.commit()
 
-    conn.commit()
-    cursor.close()
-    conn.close()
+    finally:
+        cursor.close()
+        conn.close()
