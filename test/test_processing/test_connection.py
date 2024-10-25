@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch, MagicMock
-from src.processing.connection import db_connection
+from db_connection.connection import db_connection
 
 
 class TestDbConnection(unittest.TestCase):
