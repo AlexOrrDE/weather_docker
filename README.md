@@ -35,7 +35,7 @@ This is a personal project aimed at learning Docker by building an application t
 - `docker-compose.yml`: Configures and orchestrates container services for easy setup.
 - `crontab`: Scedules task for cron jobs to automate data ingestion processes at specified intervals.
 - `entrypoint.sh`: Script to start the cron job for automated data ingestion.
-- `Makefile`:
+- `Makefile`: Automates setup and execution of various development tasks, including environment creation, dependency installation, and running tests.
 
 ## How It Works
 
@@ -63,4 +63,4 @@ This is a personal project aimed at learning Docker by building an application t
    cd weather_docker
    ```
 
-
+README to be completed...
