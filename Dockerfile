@@ -4,9 +4,9 @@ RUN apt-get update && apt-get install -y cron
 
 WORKDIR /app
 COPY . /app
+ENV PYTHONPATH="/app"
 
-
-RUN pip install requests psycopg2-binary
+RUN pip install -r requirements.txt
 
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
