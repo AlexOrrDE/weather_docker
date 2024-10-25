@@ -1,6 +1,6 @@
 import os
 import psycopg2
-from src.error_handling.error_connection import handle_errors
+from src.db_connection.error_handling import handle_errors
 
 
 @handle_errors

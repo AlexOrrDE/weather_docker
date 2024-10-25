@@ -1,12 +1,12 @@
 import unittest
 from unittest.mock import patch
 from psycopg2 import OperationalError, DatabaseError
-from src.error_handling.error_connection import handle_errors
+from src.db_connection.error_handling import handle_errors
 
 
 class TestHandleErrors(unittest.TestCase):
 
-    @patch("src.error_handling.error_connection.logging.error")
+    @patch("src.db_connection.error_handling.logging.error")
     def test_operational_error_handling(self, mock_log_error):
         """Test if OperationalError is caught, logged, and re-raised."""
 
@@ -21,7 +21,7 @@ class TestHandleErrors(unittest.TestCase):
             "OperationalError occurred in 'faulty_func': Operational error occurred"
         )
 
-    @patch("src.error_handling.error_connection.logging.error")
+    @patch("src.db_connection.error_handling.logging.error")
     def test_database_error_handling(self, mock_log_error):
         """Test if DatabaseError is caught, logged, and re-raised."""
 
@@ -36,7 +36,7 @@ class TestHandleErrors(unittest.TestCase):
             "DatabaseError occurred in 'faulty_func': Database error occurred"
         )
 
-    @patch("src.error_handling.error_connection.logging.error")
+    @patch("src.db_connection.error_handling.logging.error")
     def test_general_exception_handling(self, mock_log_error):
         """Test if general exceptions are caught, logged, and re-raised."""
 

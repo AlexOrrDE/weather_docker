@@ -1,12 +1,12 @@
 import unittest
 from psycopg2 import sql
 from unittest.mock import patch, MagicMock
-from src.processing.save_to_db import save_to_db  # Import your save_to_db function
+from src.processing.save_to_db import save_to_db
 
 
 class TestSaveToDb(unittest.TestCase):
 
-    @patch("src.processing.save_to_db.db_connection")  # Mock the db_connection function
+    @patch("src.processing.save_to_db.db_connection")
     def test_save_to_db_single_entry(self, mock_db_connection):
         """Test save_to_db with a single entry of processed data."""
 

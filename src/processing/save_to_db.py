@@ -1,5 +1,5 @@
 from psycopg2 import sql
-from db_connection.connection import db_connection
+from src.db_connection.connection import db_connection
 from src.db_connection.error_handling import handle_errors
 
 
