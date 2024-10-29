@@ -63,4 +63,70 @@ This is a personal project aimed at learning Docker by building an application t
    cd weather_docker
    ```
 
-README to be completed...
+2. **Setup Postgres database and table**:
+
+- Setup a Postgres database.
+- In this database, create a table with name: **weather_data**
+
+3. **Setup Environment Variables**:
+
+Create a .env file in your repository and set your OpenWeather API key and PostgreSQL credentials.
+
+- Example .env:
+
+        OPENWEATHER_API_KEY=your_api_key
+        DB_NAME=your_db_name
+        DB_USER=your_user
+        DB_PASSWORD=your_password
+        DB_HOST=host.docker.internal
+        DB_PORT=5432
+
+4. **Build and Run**:
+
+Use the Makefile to set up the project environment and run necessary tasks.
+
+- To create the Python environment and install requirements, run:
+
+```bash
+make all
+```
+
+- This command will:
+
+    - Create a virtual environment.
+    - Install the required Python packages listed in requirements.txt.
+    - Set up development tools (Bandit, Safety, Flake8, Coverage).
+    - Run security tests, flake8 checks, unit tests, and coverage checks.
+
+- To build the Docker image and start the container, run:
+
+```bash
+docker-compose up -d --build
+```
+
+The application will run on build, and then periodically depending on the frequency specified in `crontab` (by default this is every twenty minutes from the hour).
+
+- To stop the container, run:
+```bash
+docker-compose down
+```
+
+## Troubleshooting
+
+- **Environment Variables**: Ensure the .env file is correctly configured.
+- **Docker Logs**: Check logs in Docker, or by running:
+```bash
+docker logs weather-ingestor
+```
+- **Run Tests**: Check logs in terminal after running:
+```bash
+make run-unit-tests
+```
+
+## Future Improvements
+
+- Add table of contents to `README.md`
+- Add more cities and expand data processing capabilities.
+- Implement database and table setup into `Makefile`.
+- Implement improved error handling and data validation.
+- Set up monitoring for the database and application.
