@@ -50,9 +50,8 @@ This is a personal project aimed at learning Docker by building an application t
 
 ### Prerequisites
 
-- Docker and Docker Compose installed on your system.
+- Docker and Postgres installed on your system.
 - OpenWeather API key (sign up at [OpenWeather](https://openweathermap.org/) for an API key).
-- PostgreSQL database (or use a PostgreSQL Docker container if not installed locally).
 
 ### Setup
 
