@@ -12,15 +12,14 @@ def process_data(data_list):
         # Convert temperature to celsius
         temperature_kelvin = main.get("temp")
         temperature_celsius = (
-            temperature_kelvin - 273.15 if temperature_kelvin is not None else None
-        )
+            temperature_kelvin -
+            273.15 if temperature_kelvin is not None else None)
 
         # Convert timestamp to data & time
         timestamp_unix = data.get("dt")
         if timestamp_unix is not None:
-            timestamp_local = datetime.fromtimestamp(timestamp_unix) + timedelta(
-                hours=1
-            )
+            timestamp_local = datetime.fromtimestamp(
+                timestamp_unix) + timedelta(hours=1)
             timestamp_formatted = timestamp_local.strftime("%Y-%m-%d %H:%M:%S")
         else:
             timestamp_formatted = None

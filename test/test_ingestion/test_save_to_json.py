@@ -12,7 +12,10 @@ class TestSaveToJson(unittest.TestCase):
     def test_save_to_json_creates_directories_and_file(
         self, mock_open_fn, mock_exists, mock_makedirs
     ):
-        """Test if the function creates the directories and saves data as JSON."""
+        """
+        Test if the function creates the directories
+        and saves data as JSON.
+        """
 
         data = {"weather": "sunny", "temperature": 25}
         city = "London"
@@ -28,7 +31,8 @@ class TestSaveToJson(unittest.TestCase):
         self.assertTrue(file_path_arg.startswith(expected_file_path))
 
         handle = mock_open_fn()
-        written_data = "".join(call.args[0] for call in handle.write.call_args_list)
+        written_data = "".join(call.args[0]
+                               for call in handle.write.call_args_list)
         expected_data = json.dumps(data, indent=4)
         self.assertEqual(written_data, expected_data)
 
@@ -38,7 +42,10 @@ class TestSaveToJson(unittest.TestCase):
     def test_save_to_json_does_not_create_directories_if_exist(
         self, mock_open_fn, mock_exists, mock_makedirs
     ):
-        """Test if the function skips directory creation when they already exist."""
+        """
+        Test if the function skips directory creation
+        when they already exist.
+        """
 
         data = {"weather": "rainy", "temperature": 18}
         city = "Paris"
@@ -52,7 +59,8 @@ class TestSaveToJson(unittest.TestCase):
         self.assertTrue(file_path_arg.startswith(expected_file_path))
 
         handle = mock_open_fn()
-        written_data = "".join(call.args[0] for call in handle.write.call_args_list)
+        written_data = "".join(call.args[0]
+                               for call in handle.write.call_args_list)
         expected_data = json.dumps(data, indent=4)
         self.assertEqual(written_data, expected_data)
 

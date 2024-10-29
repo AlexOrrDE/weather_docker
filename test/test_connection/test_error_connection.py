@@ -18,7 +18,8 @@ class TestHandleErrors(unittest.TestCase):
             faulty_func()
 
         mock_log_error.assert_called_once_with(
-            "OperationalError occurred in 'faulty_func': Operational error occurred"
+            "OperationalError occurred in 'faulty_func': "
+            "Operational error occurred"
         )
 
     @patch("src.db_connection.error_handling.logging.error")
@@ -48,7 +49,8 @@ class TestHandleErrors(unittest.TestCase):
             faulty_func()
 
         mock_log_error.assert_called_once_with(
-            "An unexpected error occurred in 'faulty_func': General error occurred"
+            "An unexpected error occurred in 'faulty_func': "
+            "General error occurred"
         )
 
 

@@ -9,9 +9,12 @@ def save_to_db(processed_data):
 
     conn, cursor = db_connection()
 
-    insert_query = """INSERT INTO weather_data (city_name, temperature_celsius, humidity, weather_description, datetime) VALUES (%s, %s, %s, %s, %s)
-                ON CONFLICT (city_name, datetime)
-                DO NOTHING"""
+    insert_query = (
+        "INSERT INTO weather_data (city_name, temperature_celsius, humidity, "
+        "weather_description, datetime) VALUES (%s, %s, %s, %s, %s) "
+        "ON CONFLICT (city_name, datetime) "
+        "DO NOTHING"
+    )
 
     try:
         for entry in processed_data:

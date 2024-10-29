@@ -26,9 +26,11 @@ class TestSaveToDb(unittest.TestCase):
 
         save_to_db(processed_data)
 
-        insert_query = """INSERT INTO weather_data (city_name, temperature_celsius, humidity, weather_description, datetime) VALUES (%s, %s, %s, %s, %s)
-                ON CONFLICT (city_name, datetime)
-                DO NOTHING"""
+        insert_query = (
+            "INSERT INTO weather_data (city_name, temperature_celsius, "
+            "humidity, weather_description, datetime) VALUES "
+            "(%s, %s, %s, %s, %s) ON CONFLICT (city_name, datetime) "
+            "DO NOTHING")
 
         mock_cursor.execute.assert_called_once_with(
             sql.SQL(insert_query),
@@ -65,10 +67,6 @@ class TestSaveToDb(unittest.TestCase):
         ]
 
         save_to_db(processed_data)
-
-        insert_query = """INSERT INTO weather_data (city_name, temperature_celsius, humidity, weather_description, datetime) VALUES (%s, %s, %s, %s, %s)
-                ON CONFLICT (city_name, datetime)
-                DO NOTHING"""
 
         self.assertEqual(mock_cursor.execute.call_count, 2)
 

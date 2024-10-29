@@ -9,13 +9,15 @@ def handle_errors(func):
         try:
             return func(*args)
         except OperationalError as e:
-            logging.error(f"OperationalError occurred in '{func.__name__}': {e}")
+            logging.error(
+                f"OperationalError occurred in '{func.__name__}': {e}")
             raise
         except DatabaseError as e:
             logging.error(f"DatabaseError occurred in '{func.__name__}': {e}")
             raise
         except Exception as e:
-            logging.error(f"An unexpected error occurred in '{func.__name__}': {e}")
+            logging.error(
+                f"An unexpected error occurred in '{func.__name__}': {e}")
             raise
 
     return wrapper

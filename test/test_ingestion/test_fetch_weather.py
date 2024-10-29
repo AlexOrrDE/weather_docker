@@ -22,7 +22,8 @@ class TestFetchWeatherData(unittest.TestCase):
         result = fetch_weather_data(city, api_key)
 
         mock_get.assert_called_with(
-            f"http://api.openweathermap.org/data/2.5/weather?q={city},GB&appid={api_key}"
+            f"http://api.openweathermap.org/data/2.5/weather"
+            f"?q={city},GB&appid={api_key}"
         )
 
         self.assertEqual(result["weather"][0]["description"], "clear sky")
@@ -52,7 +53,8 @@ class TestFetchWeatherData(unittest.TestCase):
 
         self.assertEqual(
             str(context.exception),
-            "API key not found. Make sure the OPENWEATHER_API_KEY environment variable is set.",
+            "API key not found. "
+            "Make sure the OPENWEATHER_API_KEY environment variable is set.",
         )
 
 

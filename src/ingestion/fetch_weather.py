@@ -9,10 +9,14 @@ def fetch_weather_data(city, api_key):
 
     if api_key is None:
         raise ValueError(
-            "API key not found. Make sure the OPENWEATHER_API_KEY environment variable is set."
+            "API key not found. "
+            "Make sure the OPENWEATHER_API_KEY environment variable is set."
         )
 
-    url = f"http://api.openweathermap.org/data/2.5/weather?q={city},GB&appid={api_key}"
+    url = (
+        f"http://api.openweathermap.org/data/2.5/weather"
+        f"?q={city},GB&appid={api_key}"
+    )
     logging.info(f"Request URL: {url}")
 
     response = requests.get(url)
